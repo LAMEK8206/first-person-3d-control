@@ -6,15 +6,15 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #گرف�
 @export var jump_force : float = 8.0 #قدرت پرش
 @export var mouse_sensitivity : float = 0.5 # سرعت چرخش دوربین
 
+
 @onready var plaer_camer: Node3D = $plaer_camer
-@onready var plaer_set : CollisionShape3D = $CollisionShape3D
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #قفل کردن موس در لحظاه ای اجرای بازی
 
 
 func _process(delta: float) -> void:
-
 	#کپچر کردن و ازاد کردن موس
 	if Input.is_action_just_pressed("ui_cancel"): 
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED : #چک کردن وضعیت موس
@@ -25,11 +25,6 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-
-
-	if Input.is_action_just_pressed("seit") :
-		pass
-
 	#چرخاندن دوربین با استفاده از موس  و محدود کردن چرخش در محور ایکس
 	if event is InputEventMouseMotion: 
 		rotation_degrees.y -= event.relative.x * mouse_sensitivity #چرخاندن
@@ -41,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	#پرش
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor(): 
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() : 
 		velocity.y += jump_force
 	
 	#حرکت به چپ و راست روبه رو و عقب

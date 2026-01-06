@@ -39,5 +39,10 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 3.9200003, 0, 0, 0, 1, -4.4556823, 2, 5.376112)
 use_collision = true
 
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(4.9966164, 0, 0, 0, 0.3919999, 0, 0, 0, 2.888632, 4.9725165, 1.6756158, 5.376112)
+use_collision = true
+size = Vector3(1, 1.1381836, 1)
+
 [node name="first-person-3d-control" parent="." instance=ExtResource("1_r0ssa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5391326, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.248891, 0.15937924, 3.19171)
