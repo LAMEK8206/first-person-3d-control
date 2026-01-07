@@ -6,8 +6,12 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #گرف�
 @export var jump_force : float = 8.0 #قدرت پرش
 @export var mouse_sensitivity : float = 0.5 # سرعت چرخش دوربین
 
+#متقیر ها برای نشستن و بلند شدن
+#var stand_height := 1.8
+#var crouch_height := 1.0
 
 @onready var plaer_camer: Node3D = $plaer_camer
+#@onready var collision: CollisionShape3D = $collision
 
 
 func _ready() -> void:
@@ -32,6 +36,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		plaer_camer.rotation_degrees.x = clamp(plaer_camer.rotation_degrees.x, -90, 90) #محدود کردن
 	
 func _physics_process(delta: float) -> void:
+	
+	#مکانیک نشستن
+	#var shape := collision.shape as CapsuleShape3D
+	
+	#if Input.is_action_pressed("crouch"):
+		#shape.height = crouch_height
+		#plaer_camer.position.y = crouch_height
+	#else :
+		#shape.height = stand_height
+		#plaer_camer.position.y = stand_height
+	
+	
 	#اعمال جاذبه
 	if not is_on_floor():
 		velocity.y -= gravity * delta
