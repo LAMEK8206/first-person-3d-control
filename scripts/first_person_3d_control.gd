@@ -14,6 +14,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #گرف�
 #@onready var collision: CollisionShape3D = $collision
 
 
+@export var input_key : Array [Key] = [KEY_W , KEY_S , KEY_A , KEY_D ,KEY_SPACE , KEY_SHIFT]
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #قفل کردن موس در لحظاه ای اجرای بازی
 
@@ -52,22 +54,25 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	#پرش
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() : 
+	if Input.is_key_pressed(input_key[4]) and is_on_floor() : 
 		velocity.y += jump_force
-	
+	#var debug = Input.is_key_pressed(input_key[0])
 	#حرکت به چپ و راست روبه رو و عقب
 	#گرفتن جهت
 	var input_dir = Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	)
+		int(Input.is_key_pressed(input_key[3])) - int(Input.is_key_pressed(input_key[2])) ,
+		int(Input.is_key_pressed(input_key[1])) - int(Input.is_key_pressed(input_key[0]))
+		)
 	var diction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() #تبدیل به بردار سه بعدی
 	#اعمال نیروی حرکتی 
-	if diction: 
-		velocity.x = diction.x * player_speed
+	if diction:
+		if Input.is_key_pressed(input_key[5]) and Input.is_key_pressed(input_key[1]) == false :  
+			velocity.x = diction.x * player_speed * 2
+		else :
+			velocity.x = diction.x * player_speed
 		velocity.z = diction.z * player_speed
 	else:
 		velocity.x = 0
 		velocity.z = 0
-
+	
 	move_and_slide()
