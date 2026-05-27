@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b4r7rqqkpdn4p"]
+
+[ext_resource type="Script" uid="uid://cubknenfxqb8o" path="res://first-person-3d-control/scripts/first_person_3d_control.gd" id="1_y3ios"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w1umj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y3ios"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5teki"]
+height = 1.0
+
+[node name="first-person-3d-control" type="CharacterBody3D" unique_id=991780249]
+script = ExtResource("1_y3ios")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=188601374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_w1umj")
+
+[node name="stand" type="CollisionShape3D" parent="." unique_id=1218431406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_y3ios")
+
+[node name="cruch" type="CollisionShape3D" parent="." unique_id=954903091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_5teki")
+
+[node name="RayCast3D" type="RayCast3D" parent="cruch" unique_id=814760007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5157924, 0)
+target_position = Vector3(0, 1, 0)
+
+[node name="plaer_camer" type="Node3D" parent="." unique_id=1534368946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="plaer_camer" unique_id=1455982006]

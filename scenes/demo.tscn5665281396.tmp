@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b4r7rqqkpdn4p" path="res://first-person-3d-control/scenes/first_person_3d_control.tscn" id="1_r0ssa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r0ssa"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
 [sub_resource type="Sky" id="Sky_o0fcf"]
@@ -27,10 +28,10 @@ albedo_color = Color(0.5855951, 0, 0.0144193, 1)
 
 [node name="demo" type="Node3D" unique_id=417645102]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1554870842]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1184859703]
 environment = SubResource("Environment_s5i3o")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=158934555]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=886473307]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
@@ -55,9 +56,9 @@ use_collision = true
 material = SubResource("StandardMaterial3D_qvge2")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1649713140]
-transform = Transform3D(4.9966164, 0, 0, 0, 0.3919999, 0, 0, 0, 2.888632, 4.9725165, 1.8005185, 5.376112)
+transform = Transform3D(4.9966164, 0, 0, 0, 0.3919999, 0, 0, 0, 2.888632, 4.9725165, 2.056574, 5.376112)
 use_collision = true
 size = Vector3(1, 2, 1)
 
 [node name="first-person-3d-control" parent="." unique_id=338187579 instance=ExtResource("1_r0ssa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3058014, 0.15937924, 0.89372754)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.248891, 0.15937924, 2.19171)
