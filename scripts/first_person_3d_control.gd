@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #گرف�
 @export var sit_key: String
 @export var run_key : String
 @export var flashlight_key: String
+
 #----------------------------------------------------------------------------------------------
 #پارمتر های قابل تغییر برای پلیر
 @export var player_walk_speed : float = 6.0 #سرعت حرکت
@@ -20,6 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #گرف�
 var player_move_speed : float # متغییر برای تظیم تغییر بین حالت دویدون و راه رفتن
 @export var player_jump_force : float = 6.0 #قدرت پرش
 @export var mouse_sensitivity : float = 0.5 # سرعت چرخش دوربین
+@export var camera_fov_run_cheng : float = 100.0
 
 #----------------------------------------------------------------------------------------------
 #نود های استفاده شده در کد
@@ -29,7 +31,7 @@ var player_move_speed : float # متغییر برای تظیم تغییر بین
 @onready var flash_light : SpotLight3D = $plaer_camer/flash_light
 @onready var raycast : RayCast3D = $raycast
 @onready var animation_camera: AnimationPlayer = $plaer_camer/Camera3D/animation_camera
-
+@onready var camera_3d: Camera3D = $plaer_camer/Camera3D
 
 #----------------------------------------------------------------------------------------------
 # متغییر ها مربط به حالت ایستادن و نشتن پلیر
@@ -85,7 +87,7 @@ func _physics_process(delta: float) -> void:
 #--------------------------------------------------------------------------------
 
 	# فراخوانی تابع ها (برای تمیز تر شدن کد)
-	player_move_ment() # تابع حرکت به چهار چهت پلیر
+	player_move_ment(delta) # تابع حرکت به چهار چهت پلیر
 	player_jump()# تابع پرش پلیر 
 	
 	
@@ -94,7 +96,7 @@ func _physics_process(delta: float) -> void:
 
 
 
-func  player_move_ment () : 
+func  player_move_ment (delta) : 
 	
 	#حرکت به چپ و راست روبه رو و عقب
 	#گرفتن جهت
@@ -114,8 +116,10 @@ func  player_move_ment () :
 	# دویدن پلیر
 	if Input.is_action_pressed("run") and Input.is_action_pressed("forward") : 
 		player_move_speed = player_run_speed
+		camera_3d.fov = lerp(camera_3d.fov ,camera_fov_run_cheng ,3* delta)
 	else :
 		player_move_speed = player_walk_speed
+		camera_3d.fov = lerp(camera_3d.fov ,75.0 ,5* delta)
 
 func player_jump () : 
 	#پرش

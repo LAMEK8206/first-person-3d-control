@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4r7rqqkpdn4p"]
 
-[ext_resource type="Script" uid="uid://cubknenfxqb8o" path="res://first-person-3d-control/scripts/first_person_3d_control.gd" id="1_y3ios"]
-[ext_resource type="Texture2D" uid="uid://crtqlldknb0xl" path="res://first-person-3d-control/sprits/flashlight_light.png" id="2_5teki"]
+[ext_resource type="Script" uid="uid://cubknenfxqb8o" path="res://scripts/first_person_3d_control.gd" id="1_y3ios"]
+[ext_resource type="Texture2D" uid="uid://crtqlldknb0xl" path="res://sprits/flashlight_light.png" id="2_5teki"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w1umj"]
 
